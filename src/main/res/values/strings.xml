@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TMCore</string>
+
+    <string name="alert_error_title">錯誤訊息</string>
+    <!--常用一般字串-->
+    <string name="ok">確認</string>
+    <string name="cancel">取消</string>
+</resources>
