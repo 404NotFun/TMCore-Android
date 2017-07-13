@@ -1,6 +1,8 @@
 package studio.tmaker.jason.tmcore;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
@@ -43,6 +45,13 @@ public class TMCore {
         }
 
         return instance;
+    }
+
+    public String converter(Date date, String format) {
+        //先行定義時間格式
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        //透過SimpleDateFormat的format方法將Date轉為字串
+        return sdf.format(date);
     }
 
     public boolean validationEmail(String email) {
