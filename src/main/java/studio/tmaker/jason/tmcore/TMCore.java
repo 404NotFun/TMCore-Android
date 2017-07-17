@@ -4,6 +4,7 @@ import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,11 +48,31 @@ public class TMCore {
         return instance;
     }
 
+    public static String randomString(int length) {
+        final Random random=new Random();
+        final StringBuilder sb=new StringBuilder(length);
+        for(int i=0;i<length;++i)
+            sb.append("0123456789qwertyuiopasdfghjklzxcvbnm".charAt(random.nextInt("0123456789qwertyuiopasdfghjklzxcvbnm".length())));
+        return sb.toString();
+    }
+
     public String converter(Date date, String format) {
         //先行定義時間格式
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         //透過SimpleDateFormat的format方法將Date轉為字串
         return sdf.format(date);
+    }
+
+    public TMLocation converter(String gps) {
+        String[] parts = gps.split(",");
+        if (parts.length == 2) {
+            TMLocation tmLocation = new TMLocation();
+            tmLocation.setLatitude(Double.parseDouble(parts[0]));
+            tmLocation.setLongitude(Double.parseDouble(parts[1]));
+            return tmLocation;
+        }else {
+            return null;
+        }
     }
 
     public boolean validationEmail(String email) {
