@@ -15,6 +15,8 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.service.media.MediaBrowserService;
 import android.support.v4.media.MediaBrowserServiceCompat;
@@ -46,6 +48,15 @@ public class TMCore {
         }
 
         return instance;
+    }
+
+    public String getVersion(Context context) {
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            return pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
     }
 
     public static String randomString(int length) {
@@ -132,11 +143,6 @@ public class TMCore {
                 block.completion();
             }
         }, seconds * 1000);
-    }
-
-    public interface Block {
-        void completion();
-        void failure();
     }
 }
 
