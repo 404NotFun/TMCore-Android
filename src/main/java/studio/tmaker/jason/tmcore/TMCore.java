@@ -59,11 +59,11 @@ public class TMCore {
         }
     }
 
-    public static String randomString(int length) {
+    public String randomString(int length) {
         final Random random=new Random();
         final StringBuilder sb=new StringBuilder(length);
         for(int i=0;i<length;++i)
-            sb.append("0123456789qwertyuiopasdfghjklzxcvbnm".charAt(random.nextInt("0123456789qwertyuiopasdfghjklzxcvbnm".length())));
+            sb.append("0123456789QWERTYUIOPASDFGHJKLZXCVBNM".charAt(random.nextInt("0123456789QWERTYUIOPASDFGHJKLZXCVBNM".length())));
         return sb.toString();
     }
 
