@@ -82,7 +82,7 @@ public class TMCore {
             tmLocation.setLongitude(Double.parseDouble(parts[1]));
             return tmLocation;
         }else {
-            return null;
+            return new TMLocation();
         }
     }
 
