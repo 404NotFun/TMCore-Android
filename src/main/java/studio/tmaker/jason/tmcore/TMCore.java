@@ -119,6 +119,20 @@ public class TMCore {
         return matcher.find();
     }
 
+    public boolean validation(final String password) {
+
+        Pattern pattern;
+        Matcher matcher;
+
+        final String PASSWORD_PATTERN = "^(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{6,}$";
+
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
+
+    }
+
     public <T> T converJson(String string, Class<T> tClass) {
         if (isJSONValid(string)) {
             return gson.fromJson(string, tClass);
