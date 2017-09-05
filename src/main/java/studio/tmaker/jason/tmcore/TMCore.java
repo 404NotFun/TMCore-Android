@@ -52,6 +52,18 @@ public class TMCore {
         return instance;
     }
 
+    public String converter(String timeString,String inputFormatter, String outputFormatter) {
+        try {
+            SimpleDateFormat insdf = new SimpleDateFormat(inputFormatter);
+            Date date = insdf.parse(timeString);
+            SimpleDateFormat outsdf = new SimpleDateFormat(outputFormatter);
+            String result = outsdf.format(date);
+            return result;
+        }catch (Exception e) {
+            return null;
+        }
+    }
+
     public String hashPassword(String password) {
         String generatedPassword = null;
         try {
